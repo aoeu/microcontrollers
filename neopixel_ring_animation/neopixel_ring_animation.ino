@@ -22,6 +22,8 @@ Adafruit_NeoPixel strip = Adafruit_NeoPixel(60, PIN, NEO_GRB + NEO_KHZ800);
 // and minimize distance between Arduino and first pixel.  Avoid connecting
 // on a live circuit...if you must, connect GND first.
 
+uint32_t ledBrightness = 10;
+
 void setup() {
   // This is for Trinket 5V 16MHz, you can remove these three lines if you are not using a Trinket
   #if defined (__AVR_ATtiny85__)
@@ -30,7 +32,7 @@ void setup() {
   // End of trinket special code
 
   strip.begin();
-  strip.setBrightness(10);
+  strip.setBrightness(ledBrightness);
   strip.show(); // Initialize all pixels to 'off'
 }
 
