@@ -48,18 +48,18 @@ uint32_t yellow = strip.Color(255, 127, 0);
 
 void loop() {
   // Some example procedures showing how to display to the pixels:
-  colorWipe(brightRed, 50);
-  colorWipe(brightGreen, 50);
-  colorWipe(brightBlue, 50);
+  // colorWipe(brightRed, 50);
+  // colorWipe(brightGreen, 50);
+  // colorWipe(brightBlue, 50);
 
   // Send a theater pixel chase in...
-  theaterChase(white, 50);
-  theaterChase(red, 50);
-  theaterChase(blue, 50);
+  // theaterChase(white, 50);
+  // theaterChase(red, 50);
+  // theaterChase(blue, 50);
 
-  rainbow(20);
-  rainbowCycle(20);
-  theaterChaseRainbow(50);
+  // rainbow(20);
+  // rainbowCycle(20);
+  // theaterChaseRainbow(50);
 
   flickerFlameColors();
 }
