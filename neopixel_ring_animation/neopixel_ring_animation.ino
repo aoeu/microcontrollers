@@ -36,16 +36,23 @@ void setup() {
   strip.show(); // Initialize all pixels to 'off'
 }
 
+uint32_t brightRed = strip.Color(255, 0, 0);
+uint32_t brightGreen = strip.Color(0, 255, 0);
+uint32_t brightBlue = strip.Color(0, 0, 255);
+uint32_t white = strip.Color(127, 127, 127);
+uint32_t red = strip.Color(127, 0, 0);
+uint32_t blue = strip.Color(0, 0, 127);
+
 void loop() {
   // Some example procedures showing how to display to the pixels:
-  colorWipe(strip.Color(255, 0, 0), 50); // Red
-  colorWipe(strip.Color(0, 255, 0), 50); // Green
-  colorWipe(strip.Color(0, 0, 255), 50); // Blue
-//colorWipe(strip.Color(0, 0, 0, 255), 50); // White RGBW
+  colorWipe(brightRed, 50);
+  colorWipe(brightGreen, 50);
+  colorWipe(brightBlue, 50);
+
   // Send a theater pixel chase in...
-  theaterChase(strip.Color(127, 127, 127), 50); // White
-  theaterChase(strip.Color(127, 0, 0), 50); // Red
-  theaterChase(strip.Color(0, 0, 127), 50); // Blue
+  theaterChase(white, 50);
+  theaterChase(red, 50);
+  theaterChase(blue, 50);
 
   rainbow(20);
   rainbowCycle(20);
