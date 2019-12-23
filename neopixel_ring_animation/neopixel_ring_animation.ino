@@ -43,6 +43,9 @@ uint32_t white = strip.Color(127, 127, 127);
 uint32_t red = strip.Color(127, 0, 0);
 uint32_t blue = strip.Color(0, 0, 127);
 
+uint32_t orange = strip.Color(255, 64, 0);
+uint32_t yellow = strip.Color(255, 127, 0);
+
 void loop() {
   // Some example procedures showing how to display to the pixels:
   colorWipe(brightRed, 50);
@@ -57,6 +60,18 @@ void loop() {
   rainbow(20);
   rainbowCycle(20);
   theaterChaseRainbow(50);
+
+  flickerFlameColors();
+}
+
+void flickerFlameColors() {
+	colorWipe(brightRed, randFreq());
+	colorWipe(orange, randFreq());
+	colorWipe(yellow, randFreq());
+}
+
+uint8_t randFreq() {
+  return (uint8_t)(random(1, 10) * 10);
 }
 
 // Fill the dots one after the other with a color
