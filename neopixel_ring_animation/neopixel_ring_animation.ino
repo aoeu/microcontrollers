@@ -23,6 +23,7 @@ Adafruit_NeoPixel strip = Adafruit_NeoPixel(60, PIN, NEO_GRB + NEO_KHZ800);
 // on a live circuit...if you must, connect GND first.
 
 uint32_t ledBrightness = 10;
+uint8_t numPixels = 16;
 
 void setup() {
   // This is for Trinket 5V 16MHz, you can remove these three lines if you are not using a Trinket
@@ -61,13 +62,31 @@ void loop() {
   // rainbowCycle(20);
   // theaterChaseRainbow(50);
 
-  flickerFlameColors();
+  // flickerFlameColors();
+  pinwheel();
 }
 
 void flickerFlameColors() {
 	colorWipe(brightRed, randFreq());
 	colorWipe(orange, randFreq());
 	colorWipe(yellow, randFreq());
+}
+
+void pinwheel() {
+  uint8_t i, colorIndex, pixelIndex;
+  uint32_t colors[] = { brightRed, brightRed, brightRed, brightRed,
+			blue, blue, blue, blue,
+			yellow, yellow, yellow, yellow,
+			brightGreen, brightGreen, brightGreen, brightGreen };
+  for(i = 0; i < 16; i++) {
+    for (pixelIndex = 0; pixelIndex < numPixels; pixelIndex++) {
+      colorIndex = pixelIndex + i;
+      if (colorIndex >= numPixels) colorIndex -= numPixels;
+      strip.setPixelColor(pixelIndex, colors[colorIndex]);
+    }
+    strip.show();
+    delay(200);
+  }
 }
 
 uint8_t randFreq() {
