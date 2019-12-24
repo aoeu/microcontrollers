@@ -63,7 +63,8 @@ void loop() {
   // theaterChaseRainbow(50);
 
   // flickerFlameColors();
-  pinwheel();
+  // pinwheel();
+  tricolorWheel();
 }
 
 void flickerFlameColors() {
@@ -82,6 +83,24 @@ void pinwheel() {
     for (pixelIndex = 0; pixelIndex < numPixels; pixelIndex++) {
       colorIndex = pixelIndex + i;
       if (colorIndex >= numPixels) colorIndex -= numPixels;
+      strip.setPixelColor(pixelIndex, colors[colorIndex]);
+    }
+    strip.show();
+    delay(200);
+  }
+}
+
+void tricolorWheel() {
+  uint32_t colors[] = {
+    brightRed, brightRed, brightRed, brightRed, brightRed, brightRed, brightRed, brightRed,
+    blue, blue, blue, blue, blue, blue, blue, blue,
+    yellow, yellow, yellow, yellow, yellow, yellow, yellow, yellow,
+  };
+  uint8_t i, colorIndex, pixelIndex, colorsLen = 24;
+  for (i = 0; i < colorsLen; i++) {
+    for (pixelIndex = 0; pixelIndex < numPixels; pixelIndex++) {
+      colorIndex = pixelIndex + i;
+      if (colorIndex >= colorsLen) colorIndex -= colorsLen;
       strip.setPixelColor(pixelIndex, colors[colorIndex]);
     }
     strip.show();
